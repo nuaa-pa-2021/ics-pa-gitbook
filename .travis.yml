@@ -1,0 +1,29 @@
+language: node_js
+node_js: stable
+cache:
+    directories:
+      - node_modules
+
+branches:
+    only:
+        - 2020
+
+before_install:
+    - export TZ='Asia/Shanghai'
+
+install:
+    - npm install -g gitbook-cli
+    - gitbook install
+
+script:
+    - gitbook build
+
+after_script:
+    - cd ./_book
+    - git init
+    - sed -i '$a*.md' .gitignore
+    - git config user.name "NUAA ics-pa"
+    - git config user.email "nuaa-pa@gmail.com"
+    - git add .
+    - git commit -m "gitbook init"
+    - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
