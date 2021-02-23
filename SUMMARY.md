@@ -35,3 +35,4 @@
     * [i386 手册阅读指南](others/how-to-read-i386.md)
     * [i386 手册勘误](others/i386-typo.md)
     * [软件推荐](others/software-suggest.md)
+
